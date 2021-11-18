@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("springiest")
+@RequestMapping("/springrest")
 public class StudentController {
 
     @Autowired
@@ -23,14 +23,14 @@ public class StudentController {
     }
 
     //http://localhost:8080/student-by-id/10
-    @GetMapping("/student-by-id{studentid}")
+    @GetMapping("/student-by-id/{id}")
     public Student getStudentById(@PathVariable("id") int id){
         return studentService.getById(id);
     }
-    //http://localhost:8080/studen-by-name/Amit
+    //http://localhost:8080/student-by-name/Amit
     @GetMapping("/student-by-name/{name}")
-    public List<Student> getStudentByName(@PathVariable("name") String studentname){
-        return studentService.getStudentByName(studentname);
+    public List<Student> getStudentByName(@PathVariable("name") String name){
+        return studentService.getStudentByName(name);
     }
 // http://localhost:8080/student-by-course/?category=Fiction
     @GetMapping("/student-by-course")
